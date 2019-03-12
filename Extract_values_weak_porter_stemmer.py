@@ -1,6 +1,10 @@
-def printStats(folderName):
-    with open('./' + folderName + '/Standard/evaluation') as f:
-        lines = f.readlines()
+def printStats(folderName, weakStemmer = False):
+    if weakStemmer:
+        with open('./' + folderName + '/Weak_Porter_Stemmer/evaluation') as f:
+            lines = f.readlines()
+    else:
+        with open('./' + folderName + '/Standard/evaluation') as f:
+            lines = f.readlines()
     # Deletes values which are not map, Rprec or P_10; saves substrings inside lines
     f = 0
     while f<len(lines):
@@ -37,17 +41,23 @@ runs.append(printStats('Run1_Stopword+Stemmer+BM25'))
 runs.append(printStats('Run2_Stopword+Stemmer+TF_IDF'))
 runs.append(printStats('Run3_Stemmer+BM25'))
 runs.append(printStats('Run4_TF_IDF'))
+runs.append(printStats('Run1_Stopword+Stemmer+BM25', True))
+runs.append(printStats('Run2_Stopword+Stemmer+TF_IDF', True))
+runs.append(printStats('Run3_Stemmer+BM25', True))
 # Divides the three measures in three different files; every file contains a table of the measure for each run and for every topic
-with open('map.txt', 'w+') as f:
-    f.write("Run1 Run2 Run3 Run4\n")
+with open('map_wps.txt', 'w+') as f:
+    f.write("Run1 Run2 Run3 Run4 Run1wps Run2wps Run3wps\n")
     for t in range(len(runs[0])):
-        f.write(runs[0][t][0][2] + ' ' + runs[1][t][0][2] + ' ' + runs[2][t][0][2] + ' ' + runs[3][t][0][2] + "\n")
-with open('Rprec.txt', 'w+') as f:
-    f.write("Run1 Run2 Run3 Run4\n")
+        f.write(runs[0][t][0][2] + ' ' + runs[1][t][0][2] + ' ' + runs[2][t][0][2] + ' ' + runs[3][t][0][2] + ' ' \
+		+ runs[4][t][0][2] + ' ' + runs[5][t][0][2] + ' ' + runs[6][t][0][2] + "\n")
+with open('Rprec_wps.txt', 'w+') as f:
+    f.write("Run1 Run2 Run3 Run4 Run1wps Run2wps Run3wps\n")
     for t in range(len(runs[0])):
-        f.write(runs[0][t][1][2] + ' ' + runs[1][t][1][2] + ' ' + runs[2][t][1][2] + ' ' + runs[3][t][1][2] + "\n")
-with open('P@10.txt', 'w+') as f:
-    f.write("Run1 Run2 Run3 Run4\n")
+        f.write(runs[0][t][1][2] + ' ' + runs[1][t][1][2] + ' ' + runs[2][t][1][2] + ' ' + runs[3][t][1][2] + ' ' \
+		+ runs[4][t][1][2] + ' ' + runs[5][t][1][2] + ' ' + runs[6][t][1][2] + "\n")
+with open('P@10_wps.txt', 'w+') as f:
+    f.write("Run1 Run2 Run3 Run4 Run1wps Run2wps Run3wps\n")
     for t in range(len(runs[0])):
-        f.write(runs[0][t][2][2] + ' ' + runs[1][t][2][2] + ' ' + runs[2][t][2][2] + ' ' + runs[3][t][2][2] + "\n")
+        f.write(runs[0][t][2][2] + ' ' + runs[1][t][2][2] + ' ' + runs[2][t][2][2] + ' ' + runs[3][t][2][2] + ' ' \
+		+ runs[4][t][2][2] + ' ' + runs[5][t][2][2] + ' ' + runs[6][t][2][2] + "\n")
 

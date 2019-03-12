@@ -15,9 +15,9 @@
 %
 % Author: Nicola Ferro (ferro@dei.unipd.it)
 
-load('../P_10.mat')
-measure = P_10.data;
-runID = P_10.colheaders;
+load('../../P_10_wps.mat')
+measure = P_10_wps.data;
+runID = P_10_wps.colheaders;
 topicID = 351:400;
 
 % the mean for each run across the topics
@@ -52,7 +52,7 @@ currentFigure = gcf;
 
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Average Precision (AP)';
+    ax.XLabel.String = 'Precision at Document Cut-off 10 (P@10)';
     ax.YLabel.String = 'Run';
 
     currentFigure.PaperPositionMode = 'auto';
@@ -72,7 +72,7 @@ currentFigure = figure;
     
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Average Precision (AP)';
+    ax.XLabel.String = 'Precision at Document Cut-off 10 (P@10)';
     ax.YLabel.String = 'Run';
     
     currentFigure.PaperPositionMode = 'auto';

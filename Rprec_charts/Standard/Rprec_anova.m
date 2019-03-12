@@ -15,7 +15,7 @@
 %
 % Author: Nicola Ferro (ferro@dei.unipd.it)
 
-load('../Rprec.mat')
+load('../../Rprec.mat')
 measure = Rprec.data;
 runID = Rprec.colheaders;
 topicID = 351:400;
@@ -52,7 +52,7 @@ currentFigure = gcf;
 
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Average Precision (AP)';
+    ax.XLabel.String = 'Rprec';
     ax.YLabel.String = 'Run';
 
     currentFigure.PaperPositionMode = 'auto';
@@ -72,7 +72,7 @@ currentFigure = figure;
     
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Average Precision (AP)';
+    ax.XLabel.String = 'Rprec';
     ax.YLabel.String = 'Run';
     
     currentFigure.PaperPositionMode = 'auto';
